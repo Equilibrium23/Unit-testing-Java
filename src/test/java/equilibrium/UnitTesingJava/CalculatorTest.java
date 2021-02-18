@@ -1,6 +1,8 @@
 package equilibrium.UnitTesingJava;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CalculatorTest
@@ -32,6 +34,24 @@ class CalculatorTest
             int b = 5;
             int expectedResult = 7;
 
+            int result = calculator.add(a,b);
+
+            Assertions.assertEquals(expectedResult,result);
+        }
+
+        //this test is a bad idea, but I wrote it to show how asserAll() works
+        @DisplayName("2 + 5 = 7 and 2 + 5 + 1 = 8")
+        @Test
+        public void should_add_2_to_5()
+        {
+            int a = 2;
+            int b = 5;
+            int expectedResult = 7;
+            int expectedResult2 = 8;
+            Assertions.assertAll(
+                    () -> Assertions.assertEquals(expectedResult+1,calculator.add(a,b)),
+                    () -> Assertions.assertEquals(expectedResult2+1,calculator.addPlusOne(a,b))
+            );
             int result = calculator.add(a,b);
 
             Assertions.assertEquals(expectedResult,result);
