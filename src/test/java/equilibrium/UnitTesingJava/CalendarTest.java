@@ -1,13 +1,29 @@
 package equilibrium.UnitTesingJava;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CalendarTest
 {
-    Calendar testObject = new Calendar();
+    private Calendar testObject = new Calendar();
+
+    @BeforeAll
+    public static void init()
+    {
+        System.out.println("init");
+    }
+
+    @AfterAll
+    public static void finish()
+    {
+        System.out.println("finish");
+    }
+
+    //    There is no guarantee of tests order in Junit.
+    //    That's why we can not relies on it.
+
     @Test
     public void test2018June()
     {
