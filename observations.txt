@@ -1,0 +1,7 @@
+1.  There is no guarantee of tests order in Junit.
+    That's why we can not relies on it.
+2.  In Junit e.g. we can call assertEquals with individual messege in 2 ways:
+    a) send String
+    b) send String Supplier
+    We can send simple String by send a method which returns String but we have to remember this method will ALWAYS be executed.
+    If we send Supplier the Supplier will be called ONLY if the test not pass.
